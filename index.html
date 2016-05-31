@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+  <p>Name: <input type="text" ng-model="name"></p>
+  <p style="background-color:{{myCol}}" ng-bind="name"></p>
+  <b>ng-model</b> : Pour déclaration de variable.<br>
+  <b>ng-bind</b> : Variable en lécture.<br>
+  
+  <div>___________________________________________________</div>
+  <div ng-app="" ng-init="firstName='Youness'">
+	<p>The name is <span style="background-color:{{myCol}}" ng-bind="firstName"></span></p>
+  </div>
+  <b>ng-init</b> : initialiser une variable .<br>
+  
+  <div>___________________________________________________</div>
+  <p><b>Expression </b> : My first expression "{5 + 5}" : {{ 5 + 5 }}</p>
+  
+  <div>___________________________________________________</div>
+  <p>Name: <input type="text" ng-model="nom"></p>
+  <p>{{nom}}</p>
+  <p>{ {nom} }</p>
+  
+  <div>___________________________________________________</div><br>
+  Nom : <input style="background-color:{{myCol}}" type="text" ng-model="nomprenom"/><br>
+  Age : <input type="text" ng-model="age"/><br>
+  <p style="background-color:{{myCol}}">{{nomprenom}}, j'ai {{age}} ans.</p>
+  
+  <div>___________________________________________________</div><br>
+  
+</div>
+<div ng-app="myApp" ng-controller="myCtrl">
+		
+	</div>
+</body>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.nomprenom= "Youness CHAFIA";
+		$scope.age= "20";
+		$scope.myCol="lightblue";
+	});
+</script> 
+</html>

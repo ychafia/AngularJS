@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<p><a href="index.html">Chap précedent : Introduction</a></p>
+<p><a href="DirectiveNgModel.html">Chap suivant : Ng-model</a></p>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<div>
+		<p><b>Les directives AngJS :</b></p>
+		* Les directives permettent d'étendre HTML avec de nouvelles attributs, appelé <b>Directive.</b><br>
+		* On peut définir nos propres directive, afin d'ajouter de nouvelles fonctionnalités à notre application.<br>
+	</div>
+	<div>
+		<p><b>Quelques directives :</b> </p>
+		* ng-app : une directive permetant de décalarer une app AngJS.<br>
+		* ng-init : une directive permetant d'initialiser des variables, des objets ... <br>
+		* ng-model : une directive permetant de lier des champs HTML. (voir cette directive comme une déclaration de variable) <br>
+	</div>
+	<div>___________________________________________________</div>
+	<p><b> Ng-repeat : </b></p>
+	Exemple 1 :<br>
+	<ul ng-init="names=['Jani','Hege','Kai']">
+		<li ng-repeat="x in names">
+			{{x}}
+		</li>
+	</ul>
+	Exemple 2 : <br>
+	<ul>
+		<li ng-repeat="x in prenoms">
+			{{x.name | uppercase}}, from <b>{{x.country}}</b>
+		</li>
+	</ul>
+	
+	<div>___________________________________________________</div>
+	<p><b>Création de nouvelles directives : </b></p>
+	<p>On crée une nouvelle directive avec le code suivant <b>(.directive)</b></p>
+	var app = angular.module("myApp", []);<br>
+		app.directive("w3TestDirective", function() {
+		return {
+			template : "<h 1>Made by a directive!</h 1>"
+		};
+	});<br>
+	- Lors de la définition d'une directive, elle doit être écrite en camelCaseForm.<br>
+	- A son invocation, elle doit être écrite avec (-). exemple : <b>w3-test-directive.</b> Elle peut être utilisée en tant que : <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Balise.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Attribut.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Class.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Commentaire.<br>
+	
+	<br><br>
+	
+	Exempel : <br>
+	- < w 3-test -directive> < /w 3 -test -directive> : <w3-test-directive></w3-test-directive>
+
+	<p><b>Les restrictions : </b></p>
+	On peut réstreindre l'utilisation des directives à des balises, attributs, class ou commentaires, en rajoutant <b> restrict : "A", comme ceci : </b><br>
+    <ul>
+	<li>E : for Element name</li>
+	<li>A : for Attribute</li>
+	<li>C : for Class</li>
+	<li>M : for Comment</li>
+	</ul>
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* return {
+        restrict : "A",
+        template : "______"
+    };
+	<br><br>
+	<p><a href="DirectiveNgModel.html">Chap suivant : Ng-model</a></p>
+	<br><br><br>
+	<div>___________________________________________________</div>
+</div>
+<p><a href="index.html">Chap précedent : Introduction</a></p>
+<p><a href="DirectiveNgModel.html">Chap suivant : Ng-model</a></p>
+</body>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.prenoms=[
+			{name:'Jani',country:'Norway'},
+			{name:'Hege',country:'Sweden'},
+			{name:'Kai',country:'Denmark'}
+		]
+	});
+	app.directive("w3TestDirective", function() {
+		return {
+			template : "<h2>Made by a directive!</h2>"
+		};
+	});
+		
+</script> 
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<style>
+input.ng-invalid {
+    background-color: lightblue;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<p><a href="Directives.html">Chap précedent : Les directives</a></p>
+<p><a href="DataBinding.html">Chap suivant : Ng-model</a></p>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<center><h1>Ng-model </h1></center>
+	Permet de 'binder' la valeur d'un élément en HTML dans une variable AngJS.<br>
+	Exemple : 
+	<ul><li>Nom: <input ng-model="nom"></li></ul>
+	<div>___________________________________________________</div>
+	<br><b>Le binding dans les deux sens :</b><br><br>
+	Name: <input ng-model="name">
+    You entered: {{name}}
+	<div>___________________________________________________</div>
+	<br>
+	<b>La validation des champs de saisie :</b><br><br>
+	Ng-model permet de valider les données saisies par l'utilisateur :<br><br>
+	<form ng-app="" name="myForm">
+    Email:
+    <input type="email" name="myAddress" ng-model="text">
+    <span ng-show="myForm.myAddress.$error.email">Email non valide</span><br><br>
+	Enter your name:
+    <input name="myName" ng-model="myText" required>*req
+	<ul><li>ng-empty</li></ul>
+	<ul><li>ng-not-empty</li></ul>
+	<ul><li>ng-touched</li></ul>
+	<ul><li>ng-untouched</li></ul>
+	<ul><li>ng-valid</li></ul>
+	<ul><li>ng-invalid</li></ul>
+	<ul><li>ng-dirty</li></ul>
+	<ul><li>ng-pending</li></ul>
+	<ul><li>ng-pristine</li></ul>
+	<div>___________________________________________________</div>
+	<br>
+	
+</form>
+</div>
+<p><a href="Directives.html">Chap précedent : Les directives</a></p>
+<p><a href="DataBinding.html">Chap suivant : Ng-model</a></p>
+</body>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.nom = "Youness CHAFIA";
+	});
+	
+		
+</script> 
+</html>

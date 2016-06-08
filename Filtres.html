@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<p><a href="DataBinding.html">Chap précedent : DataBinding</a></p>
+<p><a href="Services.html">Chap suivant : Les Services</a></p>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<center><h1>Les filtres </h1></center>
+	Permet de formater les données.<br>
+	<ul><li>currency </li></ul>
+	<ul><li>date </li></ul>
+	<ul><li>filter </li></ul>
+	<ul><li>json </li></ul>
+	<ul><li>limitTo </li></ul>
+	<ul><li>lowercase </li></ul>
+	<ul><li>number </li></ul>
+	<ul><li>orderBy </li></ul>
+	<ul><li>uppercase  </li></ul>
+	On peut ajouter des filtres aux expressions :
+	<ul><li>{ { lastName | uppercase } }  </li></ul>
+	<ul><li>ng-repeat="x in names | orderBy:'country'"  </li></ul>
+	<ul><li>ng-repeat="x in names | filter : 'i'"  </li></ul>
+	<textarea rows="4" cols="70" disabled>
+<div ng-app="myApp" ng-controller="namesCtrl">
+<ul>
+  <li ng-repeat="x in names | orderBy:'country'">
+    { { x.name + ', ' + x.country } }
+  </li>
+</ul>
+</div> 
+	</textarea> <br><br>
+	<b>Exemple </b>: Afficher la liste en fonction de saisie utilisateur :<br>
+	<p><input type="text" ng-model="test"></p>
+	<ul>
+		<li ng-repeat="x in names | filter : test">
+			{{ x }}
+		</li>
+	</ul>
+
+	<b>Exemple </b>: Trier par colonne :<br>
+	<table border="1" width="100%">
+	  <tr>
+		<th ng-click="orderByMe('name')">Name</th>
+		<th ng-click="orderByMe('country')">Country</th>
+	  </tr>
+	  <tr ng-repeat="x in names2 | orderBy:myOrderBy">
+		<td>{{x.name}}</td>
+		<td>{{x.country}}</td>
+	  </tr>
+	</table>
+	<br><br>
+	<b>Création ces propores filtres : Mettre en maj les position paire :</b><br>
+	<ul>
+		<li ng-repeat="x in names3">
+			{{x | myFormat}}
+		</li>
+	</ul>
+
+
+	
+</div>
+<br><br><br><br><p><p><a href="DataBinding.html">Chap précedent : DataBinding</a></p>
+<p><a href="Services.html">Chap suivant : Les Services</a></p>
+</body>
+<script>
+	var app = angular.module('myApp', []);
+	
+	app.controller('myCtrl', function($scope) {
+		$scope.nom = "Youness CHAFIA";
+			$scope.names = [
+			'Jani',
+			'Carl',
+			'Margareth',
+			'Hege',
+			'Joe',
+			'Gustav',
+			'Birgit',
+			'Mary',
+			'Kai'
+		];
+		
+		$scope.names3 = ['Jani', 'Carl', 'Margareth', 'Hege', 'Joe', 'Gustav', 'Birgit', 'Mary', 'Kai'];
+		
+		$scope.names2 = [
+			{name:'Jani',country:'Norway'},
+			{name:'Carl',country:'Sweden'},
+			{name:'Margareth',country:'England'},
+			{name:'Hege',country:'Norway'},
+			{name:'Joe',country:'Denmark'},
+			{name:'Gustav',country:'Sweden'},
+			{name:'Birgit',country:'Denmark'},
+			{name:'Mary',country:'England'},
+			{name:'Kai',country:'Norway'}
+		];
+		$scope.orderByMe = function(x) {
+			$scope.myOrderBy = x;
+		}
+	});
+	
+	app.filter('myFormat', function() {
+		return function(x) {
+			var i, c, txt = "";
+			for (i = 0; i < x.length; i++) {
+				c = x[i];
+				if (i % 2 == 0) {
+					c = c.toUpperCase();
+				}
+				txt += c;
+			}
+			return txt;
+		};
+	});
+	
+		
+</script> 
+</html>

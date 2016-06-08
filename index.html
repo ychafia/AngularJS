@@ -2,7 +2,7 @@
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
-
+<p><a href="Directives.html">Chap suivant : Ng-model</a></p>
 <div ng-app="myApp" ng-controller="myCtrl">
   <p>Name: <input type="text" ng-model="name"></p>
   <p style="background-color:{{myCol}}" ng-bind="name"></p>
@@ -10,8 +10,8 @@
   <b>ng-bind</b> : Variable en lécture.<br>
   
   <div>___________________________________________________</div>
-  <div ng-app="" ng-init="firstName='Youness'">
-	<p>The name is <span style="background-color:{{myCol}}" ng-bind="firstName"></span></p>
+  <div ng-app="" ng-init="firstName='Youness'; ville='VDF'" >
+	<p>The name is <span style="background-color:{{myCol}}" ng-bind="firstName + ' ' + ville"></span></p>
   </div>
   <b>ng-init</b> : initialiser une variable .<br>
   
@@ -29,11 +29,20 @@
   <p style="background-color:{{myCol}}">{{nomprenom}}, j'ai {{age}} ans.</p>
   
   <div>___________________________________________________</div><br>
+  <b>Les objets en AngJS : </b>
+  <span ng-init="personne={nom:'Yo',prenom:'titi'}"></span><br>
+  - Nom : {{personne.nom}} ({personne.nom})<br>
+  - Prenom : {{personne.prenom}} ({personne.prenom})<br>
+  
+  <div>___________________________________________________</div><br>
+  Les tableaux :
+  <span ng-init="points=[1,15,19,2,40]"></span><br>
+  <p style="background-color:{{myCol}}">- [1,15,19,2,40] : La 3eme position du tableau {{points[2]}} ({points[2]})</p>
+  
+  <div>___________________________________________________</div><br>
   
 </div>
-<div ng-app="myApp" ng-controller="myCtrl">
-		
-	</div>
+<p><a href="Directives.html">Chap suivant : Ng-model</a></p>
 </body>
 <script>
 	var app = angular.module('myApp', []);
@@ -42,5 +51,6 @@
 		$scope.age= "20";
 		$scope.myCol="lightblue";
 	});
+		
 </script> 
 </html>

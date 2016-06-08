@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<p><a href="Directives.html">Chap précedent : Les directives</a></p>
+<p><a href="Filtres.html">Chap suivant : Les filtres</a></p>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<center><h1>Data Binding </h1></center>
+	<h3><b>Le Binding : </b></h3>
+	<p><b>Le data binding</b> permet de synchroniser les données entre le Model et la Vue dans l'architecture MVC.</p>
+	<textarea rows="4" cols="70" disabled>
+var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+	$scope.firstname = "John";
+	$scope.lastname = "Doe";
+});
+	</textarea> 
+	<br>
+	- Plusieurs façons pour binder une vue :
+	<ul><li> ng-bind="firstname"</li></ul>
+	<ul><li> { {expression} }</li></ul>
+	<ul><li> ng-model="firstname"</li></ul>
+	<br>
+	
+	<h3><b>Le Controller : </b></h3>
+	C'est graçe aux objets javascript, déclarés dans le controller, qu'on peut allimenter la vue de otre application.<br>
+	la directive <b>ng-controller</b>  définie le controller de l'application.<br>
+	<textarea rows="10" cols="70" disabled>
+<div ng-app="myApp" ng-controller="myCtrl">
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+Full Name: { {firstName + " " + lastName} }
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+</script> 
+	</textarea> <br>
+	<h3><b>$scope : </b></h3>
+	AngularJS invoque le controller avec l'objet <b>$scope</b>.<br>
+	On peut déclarer le controller dans un fichier externe, puis l'inclure dans la vue, à la fin du fichier.
+	<br>On peut mettre dans le $scope, par exemple, un tableau puis l'afficher au niveau de la vue en utilisant :
+	<ul><li> ng-repeat="x in names"</li></ul>
+	
+	<h3><b>$Rootscope : </b></h3>
+	Une variable Scope est accessible depuis la vue de MyApp1 (par exemple).<br>
+	Une variable Rootscope est accessible depuis toute les application (MyApp1, MyApp2 ...)
+</div>
+<br><br><br><br>
+<p><a href="Directives.html">Chap précedent : Les directives</a></p>
+<p><a href="Filtres.html">Chap suivant : Les filtres</a></p>
+</body>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.nom = "Youness CHAFIA";
+	});
+	
+		
+</script> 
+</html>

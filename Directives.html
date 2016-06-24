@@ -66,7 +66,10 @@
         template : "______"
     };
 	<br><br>
-	<p><a href="DirectiveNgModel.html">Chap suivant : Ng-model</a></p>
+	
+	Exempe 2 : <br>
+	custom-button>Click me : <a custom-button>Click me</a>
+
 	<br><br><br>
 	<div>___________________________________________________</div>
 </div>
@@ -87,6 +90,19 @@
 			template : "<h2>Made by a directive!</h2>"
 		};
 	});
+	app.directive('customButton', function () {
+	  return {
+		restrict: 'A',
+		replace: true,
+		transclude: true,
+		template: '<a href="" class="myawesomebutton" ng-transclude>' +
+					'<i class="icon-ok-sign"></i>' +
+				  '</a>',
+		link: function (scope, element, attrs) {
+		  // DOM manipulation/events here!
+		}
+	  };
+});
 		
 </script> 
 </html>
